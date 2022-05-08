@@ -226,7 +226,7 @@ animate = (i) => {
     startTime = Date.now()
     gainNode.gain.value = 1
     setTimeout(() => {
-        total = (((100000 / frequency.value))) - 100
+        total = (((60*1000 / frequency.value))) - 100
         gainNode.gain.value = 0
         setTimeout(() => {if (animations[i]) animate(i)}, total)
     }, 100)
