@@ -50,6 +50,10 @@
         input[type=range] {
             min-width: 0;
         }
+/* 
+        input[type=number] {
+            min-width: 50px;
+        } */
 
         select {
             padding: 10px;
@@ -116,13 +120,13 @@
     <div>
         <label>Frequency</label>
         <input id=frequency type=range value=60 min=40 max=120>
-        <input id=freqnumber type=number value=60 min=40 max=120> bpm
+        <input id=freqnumber type=number value=60 min=40 max=120 step=".01"> bpm
         <!-- <button id="heart">Randomize</button> -->
     </div>
     <div>
         <label>Tone</label>
         <input id=tone type=range value=220 min=100 max=440>
-        <input id=tonenumber type=number value=220 min=100 max=440> hz
+        <input id=tonenumber type=number value=220 min=100 max=440 step=".01"> hz
     </div>
     <div>
         <label>Type</label>
@@ -234,8 +238,8 @@ animate = (i) => {
 
 
 // Initialize
-freqNumber.value = frequency.value = ((40 + Math.random() * (120 - 40))) // Average human heartrate
-toneNumber.value = tone.value = 100 + (Math.random() * (440 - 100))
+freqNumber.value = frequency.value = Math.floor(((40 + Math.random() * (120 - 40)))) // Average human heartrate
+toneNumber.value = tone.value = Math.floor(100 + (Math.random() * (440 - 100)))
 oscillator.type = typeSelect.value;
 oscillator.frequency.setValueAtTime(tone.value, audioCtx.currentTime); // value in hertz
 oscillator.connect(gainNode);
