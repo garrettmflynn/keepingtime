@@ -15,6 +15,15 @@
         section { 
             padding: 25px 30px ;
         }
+
+        button {
+            padding: 10px;
+            color: white;
+            background: transparent;
+            border: 1px solid white;
+            border-radius: 10px;
+            width: 100px;
+        }
         
         section > div {
             width: 100%;
@@ -27,6 +36,7 @@
             font-weight: bold;
             min-width: 81px;
             text-align: right;
+            margin-lefT: 0;
         }
 
         section > div > * {
@@ -35,6 +45,14 @@
 
         input[type=range], select {
             flex-grow: 1;
+        }
+
+        input[type=range] {
+            min-width: 0;
+        }
+
+        select {
+            padding: 10px;
         }
 
         h1, h2 {
@@ -46,6 +64,9 @@
         }
 
         nav {
+            display:flex;
+            align-items: center;
+            justify-content: space-between;;
             background: black;
             color: white;
             /* position: absolute; */
@@ -57,18 +78,6 @@
 
         #stop {
             display: none;
-        }
-
-        #startControls {
-            padding: 25px 0px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        #startControls > button {
-            margin-right: 25px;
         }
 
         #progressContainer {
@@ -96,6 +105,9 @@
 <body>
     <nav>
         <h1>Keeping Time</h1>
+            <button id=start>Start</button>
+            <button id=stop>Stop</button>
+            </div>
         <div id=progressContainer>
             <div id="progress"></div>
         </div>
@@ -121,11 +133,6 @@
             <option value="sawtooth">Sawtooth</option>
         </select>
     </div>
-    <div id="startControls">
-        <button id=start>Start</button>
-        <button id=stop>Stop</button>
-        </div>
-    <div>    
     </section>
 </body>
 
@@ -142,7 +149,7 @@
     const toneNumber = document.querySelector('#tonenumber')
 
     const progressDiv = document.querySelector('#progress')
-
+    
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // create Oscillator node
@@ -192,16 +199,16 @@ start.onclick = () => {
         oscillator.start();
     }
     startAnimation()
-    // stop.style.display = 'block'
+    stop.style.display = 'block'
     start.style.display = 'none'
 }
 
-// stop.onclick = () => {
-//     animations[animations.length - 1] = false
-//     startTime = Date.now() - total
-//     start.style.display = 'block'
-//     stop.style.display = 'none'
-// }
+stop.onclick = () => {
+    animations[animations.length - 1] = false
+    startTime = Date.now() - total
+    start.style.display = 'block'
+    stop.style.display = 'none'
+}
 
 let total = 0
 let progress = 0
@@ -233,7 +240,7 @@ oscillator.type = typeSelect.value;
 oscillator.frequency.setValueAtTime(tone.value, audioCtx.currentTime); // value in hertz
 oscillator.connect(gainNode);
 gainNode.connect(audioCtx.destination);
-start.click()
+// start.click()
 
 </script>
 </html>
