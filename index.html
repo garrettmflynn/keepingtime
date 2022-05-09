@@ -23,6 +23,12 @@
             border: 1px solid white;
             border-radius: 10px;
             width: 100px;
+            transition: 0.5s;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: rgb(46, 46, 46);
         }
         
         section > div {
@@ -104,6 +110,27 @@
             height: 100%;
         }
 
+        #description {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            background: rgb(234, 234, 234);
+        }
+
+        #description > div {
+            padding: 15px 30px;
+            font-size: 90%;
+        }
+        
+        #description > h2 {
+            width: 100%;
+            background: black;
+            color: white;
+            font-size: 13px;
+            padding: 10px 30px;
+        }
+
     </style>
 </head>
 <body>
@@ -138,6 +165,20 @@
         </select>
     </div>
     </section>
+    <div id="description">
+        <h2>Workshop Details</h2>
+        <div>
+            <p>
+                As societies around the world continue to reject capitalist time, 
+                the question of how individuals will reappropriate time for themselves 
+                becomes increasingly relevant.
+            </p>
+            <p>
+                In this Community Convening, we invite 
+                participants to prototype and share their own temporalities. 
+            </p>
+        </div>
+    </div>
 </body>
 
 <script>
